@@ -1,0 +1,835 @@
+/* ================================
+   CASA DE SABOR - STYLESHEET
+   Estilo minimalista editorial tipo Fear of God
+   ================================ */
+
+/* ================================
+   1. VARIABLES Y RESET
+   ================================ */
+
+:root {
+    --primary-bg: #fafafa;
+    --text-primary: #1a1a1a;
+    --text-secondary: #666666;
+    --accent: #1a1a1a;
+    --border: #e0e0e0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--primary-bg);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    letter-spacing: 0.02em;
+}
+
+/* ================================
+   2. HEADER & NAVIGATION
+   ================================ */
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(250, 250, 250, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid var(--border);
+}
+
+nav {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 25px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 45px;
+    list-style: none;
+}
+
+.nav-menu a {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    text-decoration: none;
+    position: relative;
+    transition: opacity 0.3s ease;
+}
+
+.nav-menu a:hover {
+    opacity: 0.6;
+}
+
+/* ================================
+   3. HERO SECTION
+   ================================ */
+
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 2;
+    animation: fadeInUp 1.2s ease-out;
+}
+
+.hero-logo {
+    margin-bottom: 40px;
+    animation: fadeInUp 1s ease-out;
+}
+
+.hero-logo img {
+    max-width: 450px;
+    height: auto;
+    opacity: 0.95;
+    transition: opacity 0.3s ease;
+}
+
+.hero-logo img:hover {
+    opacity: 1;
+}
+
+.hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 8vw, 120px);
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    margin-bottom: 30px;
+    line-height: 1.1;
+}
+
+.hero-subtitle {
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 50px;
+}
+
+.cta-primary {
+    display: inline-block;
+    padding: 18px 55px;
+    border: 1px solid var(--text-primary);
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: all 0.4s ease;
+    background: transparent;
+}
+
+.cta-primary:hover {
+    background: var(--text-primary);
+    color: var(--primary-bg);
+}
+
+/* ================================
+   4. SECTIONS
+   ================================ */
+
+.section {
+    padding: 120px 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.section-header {
+    margin-bottom: 80px;
+    text-align: center;
+}
+
+.section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    margin-bottom: 20px;
+}
+
+.section-description {
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 2;
+}
+
+/* ================================
+   5. PRODUCT GRID
+   ================================ */
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    margin-bottom: 80px;
+}
+
+.product-card {
+    position: relative;
+    cursor: pointer;
+    animation: fadeInUp 0.8s ease-out backwards;
+}
+
+.product-card:nth-child(1) { animation-delay: 0.1s; }
+.product-card:nth-child(2) { animation-delay: 0.2s; }
+.product-card:nth-child(3) { animation-delay: 0.3s; }
+.product-card:nth-child(4) { animation-delay: 0.4s; }
+.product-card:nth-child(5) { animation-delay: 0.5s; }
+.product-card:nth-child(6) { animation-delay: 0.6s; }
+
+.product-image {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: #e8e8e8;
+    margin-bottom: 25px;
+    overflow: hidden;
+    position: relative;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.05);
+}
+
+.product-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.03) 100%);
+}
+
+.product-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+    opacity: 0.7;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.product-card:hover .product-image-placeholder {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+.product-info {
+    padding: 0 10px;
+}
+
+.product-category {
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.product-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+}
+
+.product-description {
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.03em;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.product-price {
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+}
+
+/* ================================
+   6. EDITORIAL SECTION
+   ================================ */
+
+.editorial {
+    background: var(--text-primary);
+    color: var(--primary-bg);
+    padding: 150px 60px;
+    margin: 0;
+}
+
+.editorial-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+}
+
+.editorial-text h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    margin-bottom: 40px;
+    line-height: 1.2;
+}
+
+.editorial-text p {
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    line-height: 2;
+    margin-bottom: 25px;
+    opacity: 0.9;
+}
+
+.editorial-image {
+    aspect-ratio: 3/4;
+    background: #2a2a2a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.editorial-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.editorial-image-placeholder {
+    font-size: 120px;
+    opacity: 0.3;
+}
+
+/* ================================
+   7. CONTACT SECTION
+   ================================ */
+
+.contact {
+    padding: 150px 60px;
+    text-align: center;
+}
+
+.contact h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    margin-bottom: 30px;
+}
+
+.contact-subtitle {
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 60px;
+    line-height: 1.8;
+}
+
+.whatsapp-form-container {
+    max-width: 600px;
+    margin: 0 auto 50px;
+}
+
+.whatsapp-form {
+    text-align: left;
+}
+
+.whatsapp-form .form-group {
+    margin-bottom: 30px;
+}
+
+.whatsapp-form label {
+    display: block;
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    color: var(--text-secondary);
+}
+
+.whatsapp-form input,
+.whatsapp-form textarea {
+    width: 100%;
+    padding: 18px 20px;
+    border: 1px solid var(--border);
+    background: transparent;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.03em;
+    color: var(--text-primary);
+    transition: border-color 0.3s ease;
+    resize: none;
+}
+
+.whatsapp-form input:focus,
+.whatsapp-form textarea:focus {
+    outline: none;
+    border-color: var(--text-primary);
+}
+
+.whatsapp-form input::placeholder,
+.whatsapp-form textarea::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.5;
+}
+
+.whatsapp-submit-btn {
+    width: 100%;
+    padding: 22px;
+    border: 1px solid var(--text-primary);
+    background: transparent;
+    color: var(--text-primary);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.whatsapp-submit-btn:hover {
+    background: var(--text-primary);
+    color: var(--primary-bg);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.whatsapp-submit-btn .whatsapp-icon {
+    font-size: 20px;
+}
+
+.contact-info {
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+    line-height: 2;
+}
+
+.whatsapp-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 500px;
+    margin: 0 auto 50px;
+}
+
+.whatsapp-btn {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 25px 35px;
+    border: 1px solid var(--text-primary);
+    background: transparent;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.whatsapp-btn:hover {
+    background: var(--text-primary);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.whatsapp-primary:hover {
+    background: #25D366;
+    border-color: #25D366;
+}
+
+.whatsapp-secondary:hover {
+    background: var(--text-primary);
+    border-color: var(--text-primary);
+}
+
+.whatsapp-btn .whatsapp-icon {
+    font-size: 40px;
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-btn:hover .whatsapp-icon {
+    transform: scale(1.1);
+}
+
+.whatsapp-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    flex: 1;
+    color: var(--text-primary);
+}
+
+.whatsapp-btn:hover .whatsapp-text {
+    color: white;
+}
+
+.whatsapp-text strong {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.whatsapp-text small {
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    opacity: 0.8;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    text-align: left;
+}
+
+.form-group.full {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    display: block;
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    color: var(--text-secondary);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 18px 0;
+    border: none;
+    border-bottom: 1px solid var(--border);
+    background: transparent;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.03em;
+    color: var(--text-primary);
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-bottom-color: var(--text-primary);
+}
+
+.form-group textarea {
+    resize: none;
+    min-height: 120px;
+}
+
+.submit-btn {
+    margin-top: 40px;
+    width: 100%;
+    padding: 20px;
+    border: 1px solid var(--text-primary);
+    background: transparent;
+    color: var(--text-primary);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.submit-btn:hover {
+    background: var(--text-primary);
+    color: var(--primary-bg);
+}
+
+/* ================================
+   8. FOOTER
+   ================================ */
+
+footer {
+    border-top: 1px solid var(--border);
+    padding: 80px 60px;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 40px;
+    list-style: none;
+}
+
+.footer-links a {
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--text-primary);
+}
+
+.footer-info {
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+    line-height: 2;
+}
+
+/* ================================
+   9. ANIMATIONS
+   ================================ */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================================
+   10. RESPONSIVE DESIGN
+   ================================ */
+
+@media (max-width: 1024px) {
+    nav {
+        padding: 20px 40px;
+    }
+
+    .nav-menu {
+        gap: 30px;
+    }
+
+    .section {
+        padding: 80px 40px;
+    }
+
+    .editorial-content {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+
+    .contact {
+        padding: 100px 40px;
+    }
+
+    footer {
+        padding: 60px 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    nav {
+        padding: 20px 30px;
+    }
+
+    .nav-menu {
+        gap: 20px;
+    }
+
+    .nav-menu a {
+        font-size: 10px;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .section {
+        padding: 60px 30px;
+    }
+
+    .editorial {
+        padding: 100px 30px;
+    }
+
+    .contact {
+        padding: 80px 30px;
+    }
+
+    .whatsapp-buttons {
+        max-width: 100%;
+    }
+
+    .whatsapp-btn {
+        padding: 20px 25px;
+    }
+
+    .whatsapp-icon {
+        font-size: 35px;
+    }
+
+    .whatsapp-text strong {
+        font-size: 12px;
+    }
+
+    .whatsapp-text small {
+        font-size: 11px;
+    }
+}
+/* Estilos para botones de Redes Sociales en Contacto */
+.social-section {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.social-section p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #333; /* Ajusta este color al de tus textos */
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 24px;
+    color: white;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Colores específicos de cada red */
+.instagram {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.facebook {
+    background-color: #1877f2;
+}
+
+.tiktok {
+    background-color: #000000;
+}
+
+/* Efecto Hover */
+.social-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    filter: brightness(1.1);
+}
