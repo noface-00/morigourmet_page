@@ -44,7 +44,7 @@ if (whatsappForm) {
         // IMPORTANTE: Reemplaza este número con tu número de WhatsApp
         // Formato: código de país + número (sin espacios, sin +, sin guiones)
         // Ejemplo para Ecuador: 593987654321
-        const phoneNumber = '593999999999'; // ← CAMBIA ESTE NÚMERO
+        const phoneNumber = '593982667069'; // ← CAMBIA ESTE NÚMERO
         
         // Crear URL de WhatsApp
         const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
