@@ -66,19 +66,19 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const whatsappForm = document.getElementById('whatsappForm');
 
 if (whatsappForm) {
-    console.log('✅ Formulario de WhatsApp encontrado');
+    console.log('Formulario de WhatsApp encontrado');
     
     whatsappForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        console.log('📝 Formulario enviado');
+        console.log('Formulario enviado');
         
         // Obtener los valores del formulario
         const nameInput = document.getElementById('customerName');
         const messageInput = document.getElementById('customerMessage');
         
         if (!nameInput || !messageInput) {
-            console.error('❌ No se encontraron los campos del formulario');
+            console.error('No se encontraron los campos del formulario');
             alert('Error: No se pudieron encontrar los campos del formulario');
             return;
         }
@@ -105,27 +105,27 @@ ${message}`;
         // ⚠️ IMPORTANTE: Reemplaza este número con tu número de WhatsApp
         // Formato: código de país + número (sin espacios, sin +, sin guiones)
         // Ejemplo para Ecuador: 593987654321
-        const phoneNumber = '593999999999'; // ← CAMBIA ESTE NÚMERO
+        const phoneNumber = '593982667069'; // ← CAMBIA ESTE NÚMERO
         
         // Crear URL de WhatsApp
         const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
         
-        console.log('🔗 URL de WhatsApp:', whatsappURL);
+        console.log('URL de WhatsApp:', whatsappURL);
         
         // Abrir WhatsApp en nueva pestaña
         try {
             window.open(whatsappURL, '_blank');
-            console.log('✅ WhatsApp abierto correctamente');
+            console.log('WhatsApp abierto correctamente');
             
             // Limpiar formulario después de enviar
             this.reset();
         } catch (error) {
-            console.error('❌ Error al abrir WhatsApp:', error);
+            console.error('Error al abrir WhatsApp:', error);
             alert('Error al abrir WhatsApp. Por favor intenta nuevamente.');
         }
     });
 } else {
-    console.error('❌ No se encontró el formulario con ID "whatsappForm"');
+    console.error('No se encontró el formulario con ID "whatsappForm"');
 }
 
 /* ================================
@@ -164,6 +164,3 @@ window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
     lastScroll = currentScroll;
 });
-
-// Mensaje de confirmación cuando todo está listo
-console.log('🚀 Morita Gourmet - JavaScript cargado correctamente');
