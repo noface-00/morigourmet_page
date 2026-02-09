@@ -1,9 +1,47 @@
 /* ================================
-   CASA DE SABOR - JAVASCRIPT
+   MORITA GOURMET - JAVASCRIPT
    ================================ */
 
 /* ================================
-   1. SMOOTH SCROLLING
+   1. MENÚ HAMBURGUESA
+   ================================ */
+
+const menuToggle = document.querySelector('.menu-toggle');
+const navMenu = document.querySelector('.nav-menu');
+const navLinks = document.querySelectorAll('.nav-menu a');
+const body = document.body;
+
+// Abrir/cerrar menú
+if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        body.classList.toggle('menu-open');
+    });
+}
+
+// Cerrar menú al hacer clic en un enlace
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        body.classList.remove('menu-open');
+    });
+});
+
+// Cerrar menú al hacer clic fuera (en el overlay)
+document.addEventListener('click', (e) => {
+    if (body.classList.contains('menu-open') && 
+        !navMenu.contains(e.target) && 
+        !menuToggle.contains(e.target)) {
+        menuToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        body.classList.remove('menu-open');
+    }
+});
+
+/* ================================
+   2. SMOOTH SCROLLING
    ================================ */
 
 // Smooth scroll para enlaces internos
@@ -21,62 +59,73 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 /* ================================
-   2. WHATSAPP FORM HANDLING
+   3. WHATSAPP FORM HANDLING
    ================================ */
 
 // Manejo del formulario de WhatsApp
 const whatsappForm = document.getElementById('whatsappForm');
 
 if (whatsappForm) {
+    console.log('✅ Formulario de WhatsApp encontrado');
+    
     whatsappForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
+        console.log('📝 Formulario enviado');
+        
         // Obtener los valores del formulario
-        const name = document.getElementById('customerName').value;
-        const message = document.getElementById('customerMessage').value;
+        const nameInput = document.getElementById('customerName');
+        const messageInput = document.getElementById('customerMessage');
+        
+        if (!nameInput || !messageInput) {
+            console.error('❌ No se encontraron los campos del formulario');
+            alert('Error: No se pudieron encontrar los campos del formulario');
+            return;
+        }
+        
+        const name = nameInput.value.trim();
+        const message = messageInput.value.trim();
+        
+        if (!name || !message) {
+            alert('Por favor completa todos los campos');
+            return;
+        }
+        
+        console.log('👤 Nombre:', name);
+        console.log('💬 Mensaje:', message);
         
         // Construir el mensaje para WhatsApp
-        const whatsappMessage = `Hola, soy ${name}.\n\n${message}`;
+        const whatsappMessage = `Hola, soy ${name}.
+
+${message}`;
         
         // Codificar el mensaje para URL
         const encodedMessage = encodeURIComponent(whatsappMessage);
         
-        // IMPORTANTE: Reemplaza este número con tu número de WhatsApp
+        // ⚠️ IMPORTANTE: Reemplaza este número con tu número de WhatsApp
         // Formato: código de país + número (sin espacios, sin +, sin guiones)
         // Ejemplo para Ecuador: 593987654321
-        const phoneNumber = '593982667069'; // ← CAMBIA ESTE NÚMERO
+        const phoneNumber = '593999999999'; // ← CAMBIA ESTE NÚMERO
         
         // Crear URL de WhatsApp
         const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
         
+        console.log('🔗 URL de WhatsApp:', whatsappURL);
+        
         // Abrir WhatsApp en nueva pestaña
-        window.open(whatsappURL, '_blank');
-        
-        // Limpiar formulario después de enviar
-        this.reset();
+        try {
+            window.open(whatsappURL, '_blank');
+            console.log('✅ WhatsApp abierto correctamente');
+            
+            // Limpiar formulario después de enviar
+            this.reset();
+        } catch (error) {
+            console.error('❌ Error al abrir WhatsApp:', error);
+            alert('Error al abrir WhatsApp. Por favor intenta nuevamente.');
+        }
     });
-}
-
-/* ================================
-   3. FORM HANDLING (LEGACY)
-   ================================ */
-
-// Manejo del formulario de contacto (si existe)
-const contactForm = document.getElementById('contactForm');
-
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Aquí puedes agregar la lógica para enviar el formulario
-        // Por ejemplo, usando fetch() para enviar a un servidor
-        
-        // Mensaje de confirmación
-        alert('Gracias por tu consulta. Te contactaremos pronto.');
-        
-        // Limpiar formulario
-        this.reset();
-    });
+} else {
+    console.error('❌ No se encontró el formulario con ID "whatsappForm"');
 }
 
 /* ================================
@@ -104,7 +153,7 @@ document.querySelectorAll('.product-card').forEach(card => {
 });
 
 /* ================================
-   5. HEADER SCROLL EFFECT (OPCIONAL)
+   5. HEADER SCROLL EFFECT
    ================================ */
 
 // Cambia la opacidad del header al hacer scroll
@@ -113,52 +162,8 @@ const header = document.querySelector('header');
 
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
-    
-    // Si quieres agregar efecto de scroll, descomenta esto:
-    /*
-    if (currentScroll > 100) {
-        header.style.background = 'rgba(250, 250, 250, 0.98)';
-    } else {
-        header.style.background = 'rgba(250, 250, 250, 0.95)';
-    }
-    */
-    
     lastScroll = currentScroll;
 });
 
-/* ================================
-   6. NAVEGACIÓN MÓVIL (OPCIONAL)
-   ================================ */
-
-// Si quieres agregar un menú hamburguesa para móvil
-// Descomenta y personaliza este código:
-
-/*
-const menuToggle = document.createElement('button');
-menuToggle.classList.add('menu-toggle');
-menuToggle.innerHTML = '☰';
-menuToggle.style.display = 'none';
-
-const nav = document.querySelector('nav');
-const navMenu = document.querySelector('.nav-menu');
-
-nav.insertBefore(menuToggle, navMenu);
-
-menuToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-});
-
-// Mostrar botón en móvil
-if (window.innerWidth <= 768) {
-    menuToggle.style.display = 'block';
-}
-
-window.addEventListener('resize', () => {
-    if (window.innerWidth <= 768) {
-        menuToggle.style.display = 'block';
-    } else {
-        menuToggle.style.display = 'none';
-        navMenu.classList.remove('active');
-    }
-});
-*/
+// Mensaje de confirmación cuando todo está listo
+console.log('🚀 Morita Gourmet - JavaScript cargado correctamente');
